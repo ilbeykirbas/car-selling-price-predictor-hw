@@ -1,8 +1,7 @@
 import numpy as np
-import pandas as pd
 
 class LinearRegression():
-    def __init__(self, lr, n_iter):
+    def __init__(self, lr=0.01, n_iter=1000):
         self.learning_rate = lr
         self.num_iterations = n_iter
         self.weights = None
