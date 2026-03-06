@@ -1,0 +1,3 @@
+paths:
+  train_path: "data/trainDATA.csv"
+  test_path: "data/testDATA.csv"
