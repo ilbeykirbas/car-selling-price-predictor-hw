@@ -1,19 +1,19 @@
 import numpy as np
 
 class Metrics:
-    def mean_squared_error(self, y_true, y_pred):
+    def mserror(self, y_true, y_pred):
         y_true = np.array(y_true).reshape(-1)
         y_pred = np.array(y_pred).reshape(-1)
         mse = np.mean((y_true - y_pred) ** 2)
         return mse
 
-    def mean_absolute_error(self, y_true, y_pred):
+    def maerror(self, y_true, y_pred):
         y_true = np.array(y_true).reshape(-1)
         y_pred = np.array(y_pred).reshape(-1)
         mae = np.mean(np.abs(y_true - y_pred))
         return mae
 
-    def root_mean_squared_error(self, y_true, y_pred):
+    def rmserror(self, y_true, y_pred):
         mse = self.mean_squared_error(y_true, y_pred)
         rmse = np.sqrt(mse)
         return rmse
