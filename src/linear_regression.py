@@ -6,6 +6,7 @@ class LinearRegression():
         self.num_iterations = n_iter
         self.weights = None
         self.bias = None
+        self.loss_history = [] 
     
     def fit(self, X, y):
         n_samples, n_features = X.shape 
@@ -19,11 +20,16 @@ class LinearRegression():
             y_pred = np.matmul(X, self.weights) + self.bias
             error = y_pred - y
 
+            loss = np.mean(error ** 2)
+            self.loss_history.append(loss)
+
             dw = (2 / n_samples) * np.matmul(X.T, error)
             db = (2 / n_samples) * np.sum(error)
 
             self.weights = self.weights - self.learning_rate * dw
             self.bias = self.bias - self.learning_rate * db
+        
+        return self
 
     def predict(self, X):
         y_pred = np.matmul(X, self.weights) + self.bias

@@ -1,4 +1,3 @@
-from src.preprocessing import run_preprocessing
 from src.metrics import summary
 
 def test_model(model, X_test, y_test_scaled):
