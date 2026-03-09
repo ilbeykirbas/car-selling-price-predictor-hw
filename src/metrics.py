@@ -28,9 +28,9 @@ def r_squared(self, y, y_pred):
 
 def summary(self, y_true, y_pred):
     results = {
-        "MSE": self.mean_squared_error(y, y_pred),
-        "MAE": self.mean_absolute_error(y, y_pred),
-        "RMSE": self.root_mean_squared_error(y, y_pred),
-        "R2 Score": self.r_squared(y, y_pred)
+        "MSE": self.mean_squared_error(y_true, y_pred),
+        "MAE": self.mean_absolute_error(y_true, y_pred),
+        "RMSE": self.root_mean_squared_error(y_true, y_pred),
+        "R2 Score": self.r_squared(y_true, y_pred)
     }
     return results
