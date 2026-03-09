@@ -1,5 +1,4 @@
 from src.metrics import summary
-from src.scaler import StandardScaler
 
 def test_model(model, X_test, y_test, scaler):
     preds = model.predict(X_test)

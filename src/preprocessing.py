@@ -43,19 +43,20 @@ def run_preprocessing(config):
     X_test = combined_df[combined_df['is_train'] == 0].drop('is_train', axis=1)
 
     # 5. Ölçeklendirme (Scaling)
-    scaler = StandardScaler()
+    x_scaler = StandardScaler()
+    y_scaler = StandardScaler()
 
     cols_to_scale = X_train.columns
 
-    X_train[cols_to_scale] = scaler.fit_transform(X_train[cols_to_scale])
-    X_test[cols_to_scale] = scaler.transform(X_test[cols_to_scale])
+    X_train[cols_to_scale] = x_scaler.fit_transform(X_train[cols_to_scale])
+    X_test[cols_to_scale] = x_scaler.transform(X_test[cols_to_scale])
 
-    y_train_scaled = scaler.fit_transform(y_train)
-    y_test_scaled = scaler.transform(y_test) 
+    y_train_scaled = y_scaler.fit_transform(y_train)
+    y_test_scaled = y_scaler.transform(y_test) 
 
     X_train = X_train.to_numpy()
     X_test = X_test.to_numpy()
     y_train_scaled = np.array(y_train_scaled).reshape(-1, 1)
     y_test_scaled = np.array(y_test_scaled).reshape(-1, 1)
 
-    return X_train,  y_train_scaled, X_test, y_test_scaled, scaler
+    return X_train,  y_train_scaled, X_test, y_test_scaled, y_scaler
