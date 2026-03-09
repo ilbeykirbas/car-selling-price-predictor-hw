@@ -4,7 +4,4 @@ def train_model(model, X_train, y_train_scaled):
        
     model.fit(X_train_numpy,y_train_numpy)
 
-
-
-   
     return model
