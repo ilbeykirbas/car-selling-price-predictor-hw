@@ -60,7 +60,7 @@ def run_preprocessing(config):
     X_test['is_train'] = 0
     combined_df = pd.concat([X_train, X_test], axis=0)
 
-    categorical_cols = ['fuel', 'seller_type', 'transmission', 'owner']
+    categorical_cols = ['fuel', 'seller_type', 'transmission']
     combined_df = pd.get_dummies(combined_df, columns=categorical_cols, drop_first=True).astype(float)
 
     X_train = combined_df[combined_df['is_train'] == 1].drop('is_train', axis=1)
