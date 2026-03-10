@@ -6,7 +6,8 @@ class LinearRegression:
         self.num_iterations = n_iters
         self.weights = None
         self.bias = None
-        self.loss_history = [] 
+        self.loss_history = []
+        self.weight_history = [] 
     
     def fit(self, X, y):
         n_samples, n_features = X.shape 
@@ -22,6 +23,7 @@ class LinearRegression:
 
             loss = np.mean(error ** 2)
             self.loss_history.append(loss)
+            self.weight_history.append(np.append(self.weights, self.bias))  # ← ekle (bias'ı da θ₀ olarak dahil edebilirsin)
 
             # Convergence Rule - Loss Difference
             if i > 0 and abs(self.loss_history[-2] - self.loss_history[-1]) < self.learning_rate * 1e-5:

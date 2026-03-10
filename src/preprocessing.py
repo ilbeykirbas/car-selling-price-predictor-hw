@@ -46,6 +46,16 @@ def run_preprocessing(config):
     X_test.fillna(0, inplace=True)
 
     # 4. Kategorik Değişkenler ve One-Hot Encoding
+    owner_mapping = {
+    'First Owner': 5,
+    'Second Owner': 4,
+    'Third Owner': 3,
+    'Fourth & Above Owner': 2,
+    'Test Drive Car': 1
+    }
+    X_train['owner'] = X_train['owner'].map(owner_mapping)
+    X_test['owner'] = X_test['owner'].map(owner_mapping)
+
     X_train['is_train'] = 1
     X_test['is_train'] = 0
     combined_df = pd.concat([X_train, X_test], axis=0)
