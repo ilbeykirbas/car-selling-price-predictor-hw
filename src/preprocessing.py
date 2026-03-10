@@ -3,17 +3,6 @@ import numpy as np
 import os
 from src.scaler import MinMaxScaler
 
-def remove_outliers(df, column):
-    Q1 = df[column].quantile(0.25)
-    Q3 = df[column].quantile(0.75)
-    IQR = Q3 - Q1
-    
-    lower_bound = Q1 - 1.5 * IQR
-    upper_bound = Q3 + 1.5 * IQR
-    
-    # Sınırlar içinde kalan veriyi döndür
-    return df[(df[column] >= lower_bound) & (df[column] <= upper_bound)]
-
 def run_preprocessing(config):
     # 1. Kaynak Dosyaların Varlığını Kontrol Et
     train_path = config["paths"]["train_path"]
@@ -28,9 +17,6 @@ def run_preprocessing(config):
     X_test = pd.read_csv(test_path)
 
     # 3. Temizlik ve Özellik Mühendisliği (Aynı Mantık)
-    for col in ["km_driven", "selling_price"]:
-        X_train = remove_outliers(X_train, col)
-        
     X_train = X_train.drop('name', axis=1)
     X_test = X_test.drop('name', axis=1)
 

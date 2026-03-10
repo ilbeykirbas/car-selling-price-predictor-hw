@@ -4,4 +4,4 @@ paths:
 
 params:
   lr: 0.01
-  n_iters: 100000
+  n_iters: 10000
